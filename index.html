@@ -3,15 +3,495 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Head Loc'd — Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <title>Head Loc'd By Jay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#C5A059',
+            secondary: '#1A1A1A',
+            accent: '#D4AF37',
+          },
+          fontFamily: {
+            heading: ['Cormorant Garamond', 'sans-serif'],
+            body: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; color: #F3F4F6; background: #050505; margin: 0; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; }
+    .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    /* Layout guard: force all top-level elements to stack vertically */
+    body > header, body > section, body > footer, body > nav,
+    #lp-root > header, #lp-root > section, #lp-root > footer, #lp-root > nav {
+      display: block !important;
+      width: 100% !important;
+      float: none !important;
+    }
+    #lp-root {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      overflow-x: hidden !important;
+    }
+  </style>
 </head>
-<body style="background:#050505;color:#F8F6F0;font-family:'Montserrat',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;">
-  <p style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:24px;">Luxury Loc Studio</p>
-  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;margin-bottom:20px;">Head Loc'd</h1>
-  <div style="width:40px;height:2px;background:#C9A84C;margin:0 auto 32px;"></div>
-  <p style="color:rgba(248,246,240,0.6);max-width:480px;line-height:1.7;margin-bottom:32px;">Premium loc maintenance, styling, and care. Full site launching soon.</p>
-  <a href="mailto:eliteprodigyway@gmail.com" style="color:#C9A84C;text-decoration:none;">Get in touch</a>
-  <p style="position:fixed;bottom:20px;right:24px;font-size:10px;letter-spacing:.12em;color:rgba(248,246,240,.2);text-transform:uppercase;">Built by EP Media</p>
+<body style="display:block; width:100%; margin:0; padding:0;">
+<div id="lp-root">
+<header id="navbar" class="sticky top-0 z-50 transition-all duration-300 bg-black/30 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Site branding -->
+            <div class="flex-shrink-0 mr-4">
+                <a href="#" class="text-2xl font-bold tracking-wider" style="font-family: 'Cormorant Garamond', serif; color: #C5A059;">
+                    Head Loc’d By Jay
+                </a>
+            </div>
+
+            <!-- Desktop navigation -->
+            <nav class="hidden md:flex md:grow">
+                <ul class="flex grow justify-end flex-wrap items-center" style="font-family: 'Montserrat', sans-serif;">
+                    <li><a href="#about" class="font-medium text-gray-300 hover:text-[#C5A059] px-4 py-2 transition duration-150 ease-in-out">About</a></li>
+                    <li><a href="#services" class="font-medium text-gray-300 hover:text-[#C5A059] px-4 py-2 transition duration-150 ease-in-out">Services</a></li>
+                    <li><a href="#gallery" class="font-medium text-gray-300 hover:text-[#C5A059] px-4 py-2 transition duration-150 ease-in-out">Gallery</a></li>
+                    <li><a href="#process" class="font-medium text-gray-300 hover:text-[#C5A059] px-4 py-2 transition duration-150 ease-in-out">Experience</a></li>
+                    <li><a href="#contact" class="ml-4 px-6 py-2 font-semibold text-[#050505] bg-[#C5A059] rounded-full hover:bg-[#D4AF37] transition-all duration-300 transform hover:scale-105">Book Now</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="hamburger" class="text-gray-300 hover:text-[#C5A059] focus:outline-none">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full bg-[#050505] transition-transform duration-300 ease-in-out transform -translate-y-full">
+        <div class="flex justify-end p-6">
+             <button id="close-menu" class="text-gray-300 hover:text-[#C5A059]">
+                <i data-lucide="x" class="h-6 w-6"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center space-y-6 py-8" style="font-family: 'Montserrat', sans-serif;">
+            <a href="#about" class="mobile-nav-link text-xl text-gray-300 hover:text-[#C5A059]">About</a>
+            <a href="#services" class="mobile-nav-link text-xl text-gray-300 hover:text-[#C5A059]">Services</a>
+            <a href="#gallery" class="mobile-nav-link text-xl text-gray-300 hover:text-[#C5A059]">Gallery</a>
+            <a href="#process" class="mobile-nav-link text-xl text-gray-300 hover:text-[#C5A059]">Experience</a>
+            <a href="#contact" class="mobile-nav-link mt-6 px-8 py-3 font-semibold text-[#050505] bg-[#C5A059] rounded-full hover:bg-[#D4AF37] transition-all duration-300">Book Now</a>
+        </nav>
+    </div>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('-translate-y-full');
+            }, 10);
+        };
+
+        const closeAction = () => {
+            mobileMenu.classList.add('-translate-y-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        };
+
+        hamburger.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeAction);
+        mobileNavLinks.forEach(link => link.addEventListener('click', closeAction));
+    </script>
+</header>
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden bg-[#050505]">
+    <div class="absolute inset-0 z-0">
+        <img src="https://placehold.co/1920x1080?text=Luxury+Loctician+Jay+in+Cinematic+Portrait" alt="Head Loctician Jay posing elegantly in a white outfit against a dark, luxurious background" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 py-20 md:py-28 lg:py-32">
+        <div class="animate-on-scroll">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight" style="font-family: 'Cormorant Garamond', serif; color: #F3F4F6;">
+                Locs. Love. Luxury.
+            </h1>
+            <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style="font-family: 'Montserrat', sans-serif; color: #F3F4F6;">
+                A premier loctician studio creating clean parts, healthy locs, creative styles, and a relaxing experience from start to finish.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto px-10 py-4 font-semibold text-[#050505] bg-[#C5A059] rounded-full hover:bg-[#D4AF37] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#C5A059]/20" style="font-family: 'Montserrat', sans-serif;">
+                    Book Your Experience
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-10 py-4 font-semibold text-[#C5A059] border-2 border-[#C5A059] rounded-full hover:bg-[#C5A059] hover:text-[#050505] transition-all duration-300" style="font-family: 'Montserrat', sans-serif;">
+                    View Services
+                </a>
+            </div>
+            <p class="mt-12 text-sm uppercase tracking-widest" style="font-family: 'Montserrat', sans-serif; color: #D4AF37; opacity: 0.8;">
+                Nothing But Loc’s of Loving Up In Here
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="bg-[#050505] text-[#F3F4F6] py-20 md:py-28 lg:py-32 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="animate-on-scroll">
+        <p class="text-sm uppercase tracking-widest text-[#C5A059] font-['Montserrat']">The Visionary</p>
+        <h2 class="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold mt-4 mb-6">From Island Roots to Luxury Locs</h2>
+        <p class="font-['Montserrat'] text-lg leading-relaxed text-gray-300 mb-6">
+          Founded by Jay, Head Loc’d is more than a salon—it's a sanctuary born from a deep love for Afro-Caribbean hair culture. Jay’s journey began with a passion for the intricate art and spiritual significance of locs, inspired by her Jamaican heritage.
+        </p>
+        <p class="font-['Montserrat'] text-lg leading-relaxed text-gray-300">
+          She has cultivated a space where traditional techniques meet modern luxury. Here, every client receives a bespoke experience, focusing on hair health, precision parting, and styles that are both timeless and boldly expressive. It's a commitment to elevating the art of the loctician to its most luxurious form.
+        </p>
+      </div>
+      <div class="animate-on-scroll" style="--delay: 150ms;">
+        <div class="relative group">
+          <div class="absolute -inset-2.5 bg-gradient-to-br from-[#C5A059] to-[#D4AF37] rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+          <img src="https://placehold.co/800x1000?text=Jay,+Founder+&+Master+Loctician" alt="Portrait of Jay, the master loctician and founder of Head Loc'd By Jay, in an elegant studio setting" class="relative w-full h-auto object-cover rounded-2xl shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="bg-[#1A1A1A] text-[#F3F4F6] py-20 md:py-28 lg:py-32">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-16 animate-on-scroll">
+      <p class="text-sm uppercase tracking-widest text-[#C5A059] font-['Montserrat']">Our Craft</p>
+      <h2 class="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold mt-4">Signature Loc Services</h2>
+      <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-300 font-['Montserrat']">
+        Experience the pinnacle of loc artistry, where health and style converge.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Starter Locs</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Begin your journey with perfectly sectioned, clean parts designed for healthy, beautiful growth.</p>
+      </div>
+      <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group" style="--delay: 150ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="scissors" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Retwist & Style</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Meticulous maintenance paired with creative styling, from intricate updos to classic barrel twists.</p>
+      </div>
+      <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group" style="--delay: 300ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="palette" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Custom Loc Color</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Transform your look with vibrant, expertly applied color that maintains the integrity of your locs.</p>
+      </div>
+      <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group" style="--delay: 450ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="droplets" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Loc Detox</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">A deep clarifying treatment to remove buildup, leaving your locs feeling light, clean, and revitalized.</p>
+      </div>
+       <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group" style="--delay: 600ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Loc Repair</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Expert care to strengthen weak spots, reattach locs, and restore the health and beauty of your crown.</p>
+      </div>
+       <div class="animate-on-scroll bg-[#050505] p-8 rounded-2xl border border-transparent hover:border-[#C5A059] transition-all duration-300 group" style="--delay: 750ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#C5A059]/10 text-[#C5A059] mb-6 group-hover:scale-110 transition-transform">
+          <i data-lucide="crown" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Bridal & Events</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Elegant and unforgettable loc styling for your most special occasions. Look and feel like royalty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="bg-[#050505] text-[#F3F4F6] py-20 md:py-28 lg:py-32">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-16 animate-on-scroll">
+      <p class="text-sm uppercase tracking-widest text-[#C5A059] font-['Montserrat']">Portfolio</p>
+      <h2 class="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold mt-4">A Showcase of Loc Artistry</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 animate-on-scroll">
+      <div class="grid gap-4">
+        <div class="overflow-hidden rounded-2xl group">
+          <img class="h-auto w-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://placehold.co/600x800?text=Intricate+Barrel+Twist+Style" alt="Close-up of a flawless barrel twist loc style on a male client">
+        </div>
+        <div class="overflow-hidden rounded-2xl group">
+          <img class="h-auto w-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://placehold.co/800x600?text=Vibrant+Custom+Color+Locs" alt="Long, healthy locs with a vibrant custom burgundy color treatment">
+        </div>
+      </div>
+      <div class="grid gap-4 col-span-2">
+        <div class="overflow-hidden rounded-2xl group">
+          <img class="h-auto w-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://placehold.co/800x1200?text=Perfectly+Clean+Starter+Loc+Parts" alt="Top-down view of a client's scalp showing perfectly clean, diamond-parted starter locs">
+        </div>
+      </div>
+      <div class="grid gap-4">
+          <div class="overflow-hidden rounded-2xl group">
+
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="bg-[#1A1A1A] text-[#F3F4F6] py-20 md:py-28 lg:py-32">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-16 animate-on-scroll">
+      <p class="text-sm uppercase tracking-widest text-[#C5A059] font-['Montserrat']">The Journey</p>
+      <h2 class="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold mt-4">The Head Loc'd Experience</h2>
+      <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-300 font-['Montserrat']">
+        From the moment you arrive, your relaxation and hair health are our highest priorities.
+      </p>
+    </div>
+    <div class="relative">
+      <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#C5A059]/20 hidden md:block" aria-hidden="true"></div>
+      <div class="space-y-16">
+        <!-- Step 1 -->
+        <div class="relative flex flex-col md:flex-row items-center animate-on-scroll">
+          <div class="md:w-1/2 md:pr-8 lg:pr-12 text-center md:text-right">
+            <div class="w-16 h-16 rounded-full bg-[#C5A059] text-[#050505] flex items-center justify-center text-2xl font-bold font-['Montserrat'] mb-4 mx-auto md:mr-0 md:ml-auto">01</div>
+            <h3 class="font-['Cormorant_Garamond'] text-3xl font-bold mb-2">Consultation & Vision</h3>
+            <p class="font-['Montserrat'] text-gray-300">We begin with a personal consultation to understand your hair history, lifestyle, and loc aspirations.</p>
+          </div>
+          <div class="hidden md:flex w-16 h-16 bg-[#1A1A1A] border-2 border-[#C5A059] rounded-full items-center justify-center text-[#C5A059] flex-shrink-0">
+            <i data-lucide="message-circle"></i>
+          </div>
+          <div class="md:w-1/2 md:pl-8 lg:pl-12"></div>
+        </div>
+        <!-- Step 2 -->
+        <div class="relative flex flex-col md:flex-row items-center animate-on-scroll">
+          <div class="md:w-1/2 md:pr-8 lg:pr-12 md:order-last text-center md:text-left">
+            <div class="w-16 h-16 rounded-full bg-[#C5A059] text-[#050505] flex items-center justify-center text-2xl font-bold font-['Montserrat'] mb-4 mx-auto md:ml-0 md:mr-auto">02</div>
+            <h3 class="font-['Cormorant_Garamond'] text-3xl font-bold mb-2">Luxurious Cleanse</h3>
+            <p class="font-['Montserrat'] text-gray-300">Indulge in a therapeutic wash and conditioning treatment using premium products to nourish your scalp and locs.</p>
+          </div>
+          <div class="hidden md:flex w-16 h-16 bg-[#1A1A1A] border-2 border-[#C5A059] rounded-full items-center justify-center text-[#C5A059] flex-shrink-0 md:order-2">
+            <i data-lucide="bath"></i>
+          </div>
+          <div class="md:w-1/2 md:pl-8 lg:pl-12 md:order-1"></div>
+        </div>
+        <!-- Step 3 -->
+        <div class="relative flex flex-col md:flex-row items-center animate-on-scroll">
+          <div class="md:w-1/2 md:pr-8 lg:pr-12 text-center md:text-right">
+            <div class="w-16 h-16 rounded-full bg-[#C5A059] text-[#050505] flex items-center justify-center text-2xl font-bold font-['Montserrat'] mb-4 mx-auto md:mr-0 md:ml-auto">03</div>
+            <h3 class="font-['Cormorant_Garamond'] text-3xl font-bold mb-2">Artful Maintenance</h3>
+            <p class="font-['Montserrat'] text-gray-300">Jay applies her meticulous technique to retwist, interlock, or style your locs with unparalleled precision.</p>
+          </div>
+          <div class="hidden md:flex w-16 h-16 bg-[#1A1A1A] border-2 border-[#C5A059] rounded-full items-center justify-center text-[#C5A059] flex-shrink-0">
+            <i data-lucide="gem"></i>
+          </div>
+          <div class="md:w-1/2 md:pl-8 lg:pl-12"></div>
+        </div>
+        <!-- Step 4 -->
+        <div class="relative flex flex-col md:flex-row items-center animate-on-scroll">
+          <div class="md:w-1/2 md:pr-8 lg:pr-12 md:order-last text-center md:text-left">
+            <div class="w-16 h-16 rounded-full bg-[#C5A059] text-[#050505] flex items-center justify-center text-2xl font-bold font-['Montserrat'] mb-4 mx-auto md:ml-0 md:mr-auto">04</div>
+            <h3 class="font-['Cormorant_Garamond'] text-3xl font-bold mb-2">The Grand Reveal</h3>
+            <p class="font-['Montserrat'] text-gray-300">We finish with hydration and a final polish, ensuring you leave feeling confident, refreshed, and in love with your locs.</p>
+          </div>
+          <div class="hidden md:flex w-16 h-16 bg-[#1A1A1A] border-2 border-[#C5A059] rounded-full items-center justify-center text-[#C5A059] flex-shrink-0 md:order-2">
+            <i data-lucide="award"></i>
+          </div>
+          <div class="md:w-1/2 md:pl-8 lg:pl-12 md:order-1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="bg-[#050505] text-[#F3F4F6] py-20 md:py-28 lg:py-32">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-16 animate-on-scroll">
+      <p class="text-sm uppercase tracking-widest text-[#C5A059] font-['Montserrat']">Our Promise</p>
+      <h2 class="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold mt-4">The Head Loc'd Difference</h2>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="animate-on-scroll p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg">
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#C5A059]/20 text-[#D4AF37] mb-6">
+          <i data-lucide="leaf" class="w-7 h-7"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Healthy Locs First</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Our core philosophy is the long-term health of your hair. We use gentle techniques and nourishing products to ensure your locs thrive.</p>
+      </div>
+      <div class="animate-on-scroll p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg" style="--delay: 150ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#C5A059]/20 text-[#D4AF37] mb-6">
+          <i data-lucide="paintbrush" class="w-7 h-7"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">Creative Artistry</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">We see every head of locs as a unique canvas. From clean parts to bold styles, we bring your vision to life with creative flair.</p>
+      </div>
+      <div class="animate-on-scroll p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg" style="--delay: 300ms;">
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#C5A059]/20 text-[#D4AF37] mb-6">
+          <i data-lucide="couch" class="w-7 h-7"></i>
+        </div>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold mb-3">A Luxury Escape</h3>
+        <p class="font-['Montserrat'] text-gray-300 leading-relaxed">Our studio is your private retreat. Enjoy a serene, professional atmosphere where you can relax, recharge, and receive undivided attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="relative overflow-hidden bg-[#050505] py-20 md:py-28 lg:py-32" style="font-family: 'Montserrat', sans-serif;">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="w-[40rem] h-[40rem] md:w-[60rem] md:h-[60rem] bg-[#C5A059]/10 rounded-full blur-3xl animate-pulse"></div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-12 animate-on-scroll">
+      <h2 class="font-serif text-4xl md:text-5xl font-medium text-[#C5A059]" style="font-family: 'Cormorant Garamond', serif;">Secure Your Luxury Loc Experience</h2>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Ready to begin your journey to healthier, more beautiful locs? Fill out the form below to request an appointment.</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-8 md:p-12 animate-on-scroll" style="--scroll-delay: 200ms;">
+      <form id="contact-form" name="head-locd-contact" method="POST" data-netlify="true" class="space-y-8">
+        <input type="hidden" name="form-name" value="head-locd-contact">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <label for="name" class="block text-sm font-medium uppercase tracking-wider text-gray-400 mb-2">Full Name</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-[#F3F4F6] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:border-transparent transition-all duration-300" placeholder="Your Name">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium uppercase tracking-wider text-gray-400 mb-2">Email Address</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-[#F3F4F6] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:border-transparent transition-all duration-300" placeholder="your.email@example.com">
+          </div>
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium uppercase tracking-wider text-gray-400 mb-2">Message & Desired Service</label>
+          <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-[#F3F4F6] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:border-transparent transition-all duration-300" placeholder="Tell us about your loc goals (e.g., starter locs, retwist, styling)..."></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" id="submit-btn" class="px-10 py-4 bg-[#C5A059] text-[#050505] font-bold rounded-lg tracking-wider uppercase hover:bg-[#D4AF37] transform hover:scale-105 transition-all duration-300">
+            Request Booking
+          </button>
+          <p id="form-status" class="text-sm mt-4 h-4"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#1A1A1A] text-[#F3F4F6]" style="font-family: 'Montserrat', sans-serif;">
+  <div class="max-w-6xl mx-auto py-16 px-6 sm:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div class="md:col-span-2 lg:col-span-1">
+        <h3 class="text-2xl font-serif font-bold text-white" style="font-family: 'Cormorant Garamond', serif;">Head Loc’d By Jay</h3>
+        <p class="mt-4 text-sm text-gray-400 italic">"Nothing But Loc’s of Loving Up In Here"</p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">Quick Links</h4>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#about" class="text-gray-300 hover:text-[#C5A059] transition-colors duration-300">About Jay</a></li>
+          <li><a href="#services" class="text-gray-300 hover:text-[#C5A059] transition-colors duration-300">Services</a></li>
+          <li><a href="#gallery" class="text-gray-300 hover:text-[#C5A059] transition-colors duration-300">Gallery</a></li>
+          <li><a href="#contact" class="text-gray-300 hover:text-[#C5A059] transition-colors duration-300">Book Now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">Contact</h4>
+        <ul class="mt-4 space-y-3 text-gray-300">
+          <li class="flex items-start">
+            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-[#C5A059]"></i>
+            <span>Private Studio, Miami, FL</span>
+          </li>
+          <li class="flex items-start">
+            <i data-lucide="mail" class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-[#C5A059]"></i>
+            <a href="mailto:bookings@headlocdbyjay.com" class="hover:text-[#C5A059] transition-colors duration-300">bookings@headlocdbyjay.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">Follow The Journey</h4>
+        <div class="flex space-x-5 mt-4">
+          <a href="#" class="text-gray-300 transform hover:-translate-y-1 hover:text-[#C5A059] transition-all duration-300" aria-label="Instagram">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="text-gray-300 transform hover:-translate-y-1 hover:text-[#C5A059] transition-all duration-300" aria-label="TikTok">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </a>
+          <a href="#" class="text-gray-300 transform hover:-translate-y-1 hover:text-[#C5A059] transition-all duration-300" aria-label="Facebook">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 pt-8 border-t border-white/10 text-center">
+      <p class="text-sm text-gray-400">&copy; <span id="current-year"></span> Head Loc’d By Jay. All Rights Reserved. Site by an Elite Frontend Engineer.</p>
+    </div>
+  </div>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</footer>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      try {
+        const formData = new FormData(contactForm);
+        const encoded = new URLSearchParams(formData).toString();
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encoded
+        });
+        if (response.ok) {
+          formStatus.textContent = 'Message sent successfully!';
+          formStatus.className = 'text-sm mt-4 h-4 text-green-500';
+          contactForm.reset();
+        } else {
+          formStatus.textContent = 'Failed to send message. Please try again.';
+          formStatus.className = 'text-sm mt-4 h-4 text-red-500';
+        }
+      } catch (error) {
+        formStatus.textContent = 'Network error. Please try again.';
+        formStatus.className = 'text-sm mt-4 h-4 text-red-500';
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
 </body>
 </html>

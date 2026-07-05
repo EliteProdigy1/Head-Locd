@@ -1,4 +1,6 @@
-# Head Loc'd
-EP Media client site — Coming Soon placeholder.
-Status: In Design
+# Head Loc'd By Jay
+
+EP Media client site — luxury loc studio.
+
+Status: Live
 Built by: EP Media · eliteprodigyway@gmail.com
